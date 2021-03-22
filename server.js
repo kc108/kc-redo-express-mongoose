@@ -20,6 +20,9 @@ const cors = require("cors")
 // GET PORT FROM ENV OR DEFAULT PORT
 const PORT = process.env.PORT || "2021"
 
+// IMPORT Home ROUTER
+const HomeRouter = require("./routes/home")
+
 /////////////////////////////////////
 //CREATE EXPRESS APPLICATION OBJECT
 ////////////////////////////////////
@@ -52,10 +55,8 @@ app.use(express.urlencoded({ extended: false}))
 // ROUTES AND ROUTERS
 ////////////////////////////////////
 
-// Test Route
-app.get("/", (req, res) => {
-    res.send("<h1>Hello World</h1>")
-});
+// Pass ALL ROUTES to the indexRouter
+app.use("/", HomeRouter)
 
 /////////////////////////////////////
 // App Listener
